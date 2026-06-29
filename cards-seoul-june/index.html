@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Seoul in June — X30 Card News</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root{
+    --cream:#F3EEE4;
+    --rust:#B5504F;
+    --sand:#F0BE6E;
+    --ink:#1F1B19;
+    --gray:#6B6660;
+    --navy:#1B1F33;
+    --chip-tan:#ECE2CD;
+    --chip-dark:rgba(0,0,0,.35);
+    --white:#FFFFFF;
+    --hairline:rgba(255,255,255,.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:#ddd;
+    font-family:'Inter',sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:40px;
+    padding:40px 0;
+  }
+  .card{
+    width:1080px;
+    height:1350px;
+    position:relative;
+    overflow:hidden;
+    background:var(--cream);
+    flex-shrink:0;
+  }
+  .serif{font-family:'Playfair Display',serif;}
+
+  /* ---------- shared components ---------- */
+  .eyebrow{
+    text-transform:uppercase;
+    font:600 22px/1.2 'Inter',sans-serif;
+    letter-spacing:1.5px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .eyebrow::after{content:''; display:block; width:40px; height:2px; background:currentColor;}
+  .eyebrow.rust{color:var(--rust);}
+  .eyebrow.sand{color:var(--sand);}
+
+  .wordmark{
+    position:absolute; right:64px; bottom:64px;
+    font:700 28px/1 'Playfair Display',serif;
+    letter-spacing:.5px;
+    color:var(--rust);
+  }
+  .wordmark.on-rust{color:var(--cream);}
+
+  .source{
+    position:absolute; left:64px; bottom:64px;
+    font:400 18px/1.3 'Inter',sans-serif;
+    color:rgba(0,0,0,.5);
+  }
+
+  .badge{
+    position:absolute; left:32px; bottom:-36px;
+    width:72px; height:72px; border-radius:50%;
+    background:var(--rust);
+    display:flex; align-items:center; justify-content:center;
+    font:700 32px/1 'Playfair Display',serif;
+    color:#fff;
+    z-index:2;
+  }
+
+  .media{
+    position:absolute; left:64px; top:64px;
+    width:952px; height:640px; border-radius:24px;
+    overflow:hidden;
+  }
+  .media img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .media .tint{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55) 100%);
+  }
+
+  .chips{
+    position:absolute; left:64px; top:1000px;
+    width:952px; display:flex; gap:16px;
+  }
+  .chip{
+    flex:1; border-radius:16px; padding:20px 24px;
+    background:var(--chip-tan);
+  }
+  .chip .label{
+    font:600 18px/1.2 'Inter',sans-serif; letter-spacing:1px;
+    text-transform:uppercase; opacity:.65;
+    color:var(--ink);
+  }
+  .chip .value{
+    font:700 26px/1.25 'Inter',sans-serif; margin-top:4px;
+    color:var(--ink);
+  }
+
+  .headline{
+    position:absolute; left:64px; top:760px; width:952px;
+    font:700 60px/1.15 'Playfair Display',serif;
+    color:var(--ink);
+  }
+  .body-copy{
+    position:absolute; left:64px; top:900px; width:952px;
+    font:400 28px/1.4 'Inter',sans-serif;
+    color:var(--gray);
+  }
+  .caption{
+    position:absolute; left:64px; top:1140px; width:952px;
+    font:400 22px/1.4 'Inter',sans-serif;
+    color:var(--gray);
+  }
+
+  /* ===================== CARD 1 — INTRO ===================== */
+  #card1 .eyebrow{position:absolute; left:64px; top:64px;}
+  #card1 .num{
+    position:absolute; left:64px; top:104px;
+    font:800 240px/.9 'Playfair Display',serif;
+    color:var(--rust);
+  }
+  #card1 .intro-head{
+    position:absolute; left:330px; top:160px; width:686px;
+    font:700 60px/1.15 'Playfair Display',serif;
+    color:var(--ink);
+  }
+  #card1 .intro-body{
+    position:absolute; left:64px; top:420px; width:850px;
+    font:400 30px/1.4 'Inter',sans-serif;
+    color:var(--gray);
+  }
+  #card1 .strip{
+    position:absolute; left:64px; top:950px; width:952px;
+    display:flex; gap:16px; height:300px;
+  }
+  #card1 .thumb{
+    flex:1; border-radius:16px; overflow:hidden; position:relative;
+  }
+  #card1 .thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+  #card1 .thumb .tint{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.6) 100%);}
+  #card1 .thumb span{
+    position:absolute; left:14px; bottom:14px; right:14px;
+    font:700 17px/1.2 'Inter',sans-serif; color:#fff; z-index:2;
+  }
+  #card1 .thumb.cta{background:var(--rust); display:flex; align-items:center; justify-content:center;}
+  #card1 .thumb.cta span{position:static; text-align:center; font:700 20px/1.3 'Inter',sans-serif;}
+  #card1 .swipe{
+    position:absolute; left:64px; top:1230px;
+    font:600 24px/1 'Inter',sans-serif; color:var(--rust);
+  }
+
+  /* ===================== CARD 5 — CTA / CLOSING ===================== */
+  #card5{background:var(--rust);}
+  #card5 .eyebrow{position:absolute; left:64px; top:64px;}
+  #card5 .cta-head{
+    position:absolute; left:64px; top:104px; width:880px;
+    font:700 60px/1.15 'Playfair Display',serif; color:#fff;
+  }
+  #card5 .cta-body{
+    position:absolute; left:64px; top:250px; width:900px;
+    font:400 28px/1.4 'Inter',sans-serif; color:rgba(255,255,255,.9);
+  }
+  #card5 .list{
+    position:absolute; left:64px; top:380px; width:952px;
+  }
+  #card5 .row{
+    display:flex; align-items:center; gap:28px;
+    height:78px; border-bottom:1px solid var(--hairline);
+  }
+  #card5 .row .date{
+    width:185px; flex-shrink:0;
+    font:600 24px/1.3 'Playfair Display',serif; font-style:italic; color:var(--sand);
+  }
+  #card5 .row .ev{
+    font:400 26px/1.3 'Inter',sans-serif; color:#fff;
+  }
+  #card5 .cta-btn{
+    position:absolute; left:64px; top:1170px;
+    display:inline-flex; align-items:center; gap:12px;
+    background:#fff; color:var(--rust);
+    border-radius:48px; padding:24px 48px;
+    font:700 28px/1 'Inter',sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ CARD 1 — INTRO ============ -->
+<div class="card" id="card1">
+  <div class="eyebrow rust">SEOUL GUIDE · JUNE 2026</div>
+  <div class="num serif">3</div>
+  <div class="intro-head">Things you can't miss<br>in Seoul this June</div>
+  <div class="intro-body">Confirmed dates only — sports, tradition, and a night walk over the city.<br>Save this guide for the weekend.</div>
+
+  <div class="strip">
+    <div class="thumb">
+      <img src="../festivals-jun2026/02-hangang-triathlon/thumbnail.jpg" alt="Han River Triathlon Festival">
+      <div class="tint"></div>
+      <span>Han River Triathlon</span>
+    </div>
+    <div class="thumb">
+      <img src="../festivals-jun2026/04-seoul-gugak-festival/thumbnail.jpg" alt="Seoul Gugak Festival">
+      <div class="tint"></div>
+      <span>Seoul Gugak Festival</span>
+    </div>
+    <div class="thumb">
+      <img src="../festivals-jun2026/05-nseoultower-night-walk/thumbnail.jpg" alt="N Seoul Tower Global Night Walk">
+      <div class="tint"></div>
+      <span>N Seoul Tower Night Walk</span>
+    </div>
+    <div class="thumb cta"><span>+ 3 more inside →</span></div>
+  </div>
+  <div class="swipe">Swipe to see all four →</div>
+  <div class="wordmark">X30</div>
+</div>
+
+<!-- ============ CARD 2 — HAN RIVER TRIATHLON ============ -->
+<div class="card" id="card2">
+  <div class="media">
+    <img src="../festivals-jun2026/02-hangang-triathlon/thumbnail.jpg" alt="3rd MY PACE Hangang Triathlon Festival">
+    <div class="tint"></div>
+  </div>
+  <div class="badge serif">1</div>
+  <div class="eyebrow rust" style="position:absolute; left:64px; top:712px;">ACTIVITY · FIRST JUNE WEEKEND</div>
+  <div class="headline">Swim, ride & run<br>the Han River</div>
+  <div class="body-copy">It's a fun way to enjoy the river at your own pace — no racing, all levels welcome. The goal is to take part and finish, not to win.</div>
+  <div class="chips">
+    <div class="chip">
+      <div class="label">When</div>
+      <div class="value">Jun 5–7, 9am–7pm</div>
+    </div>
+    <div class="chip">
+      <div class="label">Where</div>
+      <div class="value">Ttukseom Han River Park</div>
+    </div>
+    <div class="chip">
+      <div class="label">Price</div>
+      <div class="value">KRW 30,000</div>
+    </div>
+  </div>
+  <div class="caption">One thing to know: an English event page is available, but it's good to check the registration details before signing up.</div>
+  <div class="source">Source: english.seoul.go.kr (official) · sium-sium.com</div>
+  <div class="wordmark">X30</div>
+</div>
+
+<!-- ============ CARD 3 — SEOUL GUGAK FESTIVAL ============ -->
+<div class="card" id="card3">
+  <div class="media">
+    <img src="../festivals-jun2026/04-seoul-gugak-festival/thumbnail.jpg" alt="2026 Seoul Gugak Festival">
+    <div class="tint"></div>
+  </div>
+  <div class="badge serif">2</div>
+  <div class="eyebrow rust" style="position:absolute; left:64px; top:712px;">TRADITION · ONE NIGHT ONLY</div>
+  <div class="headline">Korean music, live<br>by the Han River</div>
+  <div class="body-copy">It's a great evening to see Korean traditional music up close — live performances and hands-on experiences, all free, right on the riverside.</div>
+  <div class="chips">
+    <div class="chip">
+      <div class="label">When</div>
+      <div class="value">Jun 19, 1pm–10pm</div>
+    </div>
+    <div class="chip">
+      <div class="label">Where</div>
+      <div class="value">Banpo Hangang Park</div>
+    </div>
+    <div class="chip">
+      <div class="label">Price</div>
+      <div class="value">Free</div>
+    </div>
+  </div>
+  <div class="caption">This is the first time the festival is held by the Han River — a good reason to go this year.</div>
+  <div class="source">Source: english.seoul.go.kr (official) · seoulgugak.com</div>
+  <div class="wordmark">X30</div>
+</div>
+
+<!-- ============ CARD 4 — N SEOUL TOWER GLOBAL NIGHT WALK ============ -->
+<div class="card" id="card4">
+  <div class="media">
+    <img src="../festivals-jun2026/05-nseoultower-night-walk/thumbnail.jpg" alt="2026 N Seoul Tower Global Night Walk">
+    <div class="tint"></div>
+  </div>
+  <div class="badge serif">3</div>
+  <div class="eyebrow rust" style="position:absolute; left:64px; top:712px;">NIGHT WALK · EASIEST FOR VISITORS</div>
+  <div class="headline">Walk up Namsan,<br>under the night sky</div>
+  <div class="body-copy">It's a guided walk from Baekbeom Square up to N Seoul Tower, with a K-food market and an after party waiting at the top. English interpretation is available.</div>
+  <div class="chips">
+    <div class="chip">
+      <div class="label">When</div>
+      <div class="value">Jun 13 – Jul 11 (Sat)</div>
+    </div>
+    <div class="chip">
+      <div class="label">Where</div>
+      <div class="value">Hoehyeon Stn (L4), Exit 4</div>
+    </div>
+    <div class="chip">
+      <div class="label">Price</div>
+      <div class="value">KRW 60,000</div>
+    </div>
+  </div>
+  <div class="caption">It's the easiest of the three to join without speaking Korean — interpretation is offered on-site.</div>
+  <div class="source">Source: english.visitseoul.net (official)</div>
+  <div class="wordmark">X30</div>
+</div>
+
+<!-- ============ CARD 5 — CTA / CLOSING ============ -->
+<div class="card" id="card5">
+  <div class="eyebrow sand">CONFIRMED · JUNE 2026</div>
+  <div class="cta-head">Can't make it<br>this weekend?</div>
+  <div class="cta-body">Seoul has something on almost every weekend in June —<br>here's the full list of confirmed dates.</div>
+  <div class="list">
+    <div class="row"><div class="date serif">Jun 5–6</div><div class="ev">Gugak Week: Sai... Sori... Sum...</div></div>
+    <div class="row"><div class="date serif">Jun 5–7</div><div class="ev">Han River Triathlon Festival</div></div>
+    <div class="row"><div class="date serif">Jun 7, 14</div><div class="ev">Car-Free Jamsugyo Festival · free</div></div>
+    <div class="row"><div class="date serif">Jun 13</div><div class="ev">SPO Riverside Concert · free</div></div>
+    <div class="row"><div class="date serif">Jun 13–Jul 11</div><div class="ev">N Seoul Tower Night Walk</div></div>
+    <div class="row" style="border-bottom:none;"><div class="date serif">Jun 19</div><div class="ev">Seoul Gugak Festival · free</div></div>
+  </div>
+  <div class="cta-btn">Browse live on x30.app →</div>
+  <div class="wordmark on-rust">X30</div>
+</div>
+
+</body>
+</html>
