@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의집 - 인테리어 필요할 땐, 오늘의집</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TopBar -->
+<div class="top-bar">
+  <span class="top-bar__badge">LIVE</span>
+  첫구매라면 누구나 최대 2만원 할인 <span class="arrow">&gt;</span>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="header__inner">
+    <a href="#" class="logo">오늘의집</a>
+    <nav class="gnb">
+      <a href="#" class="gnb__item is-active">집구경</a>
+      <a href="#" class="gnb__item">쇼핑</a>
+      <a href="#" class="gnb__item">인테리어/생활</a>
+    </nav>
+    <div class="search-box">
+      <input type="text" placeholder="입력해주세요">
+      <button class="search-box__btn" aria-label="검색">🔍</button>
+    </div>
+    <div class="header__menu">
+      <button class="icon-btn" aria-label="장바구니">🛒</button>
+      <a href="#">로그인</a>
+      <a href="#">회원가입</a>
+      <a href="#">고객센터</a>
+      <a href="#" class="btn-outline">앱받기</a>
+    </div>
+  </div>
+</header>
+
+<!-- SubNav -->
+<nav class="subnav">
+  <div class="subnav__inner">
+    <ul class="subnav__list">
+      <li class="is-active"><a href="#">추천</a></li>
+      <li><a href="#">집들이</a></li>
+      <li><a href="#">집사진</a></li>
+      <li><a href="#">커뮤니티</a></li>
+      <li><a href="#">3D인테리어</a></li>
+    </ul>
+    <div class="subnav__user">3 ▲ 집대를 들새 신반</div>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__main" id="heroSlide">
+      <div class="hero__caption">
+        <p>인테리어 업계 종사자 부부의 현실적이지만 감각적인 구축 반셀프</p>
+        <span class="hero__author">ⓚ keeeams</span>
+      </div>
+      <div class="hero__indicator" id="heroIndicator">1/16 +</div>
+    </div>
+    <div class="hero__side">
+      <span class="hero__side-badge">무료견적</span>
+      <p>이사도 오늘의집<br><strong>30초 무료견적 신청</strong></p>
+      <span class="hero__truck">🚚</span>
+    </div>
+  </section>
+
+  <!-- QuickMenu -->
+  <section class="quick-menu">
+    <ul id="quickMenuList"></ul>
+  </section>
+
+  <!-- 이런 사진 찾고 있나요 -->
+  <section class="section">
+    <div class="section__head">
+      <div>
+        <h2>이런 사진 찾고 있나요?</h2>
+        <p class="section__sub">좋아하실만한 인테리어 관련컷트 추천받아요</p>
+      </div>
+      <a href="#" class="more-link">더보기 &gt;</a>
+    </div>
+    <div class="scroll-row" id="photoRow"></div>
+  </section>
+
+  <!-- 오늘의 추천 집들 -->
+  <section class="section">
+    <div class="section__head">
+      <h2>오늘의 추천 집들이 구경해보세요🎉</h2>
+      <a href="#" class="more-link">더보기 &gt;</a>
+    </div>
+    <div class="grid grid--4" id="houseGrid"></div>
+  </section>
+
+  <!-- 카테고리별 상품 찾기 -->
+  <section class="section">
+    <div class="section__head">
+      <h2>카테고리별 상품 찾기</h2>
+    </div>
+    <div class="scroll-row scroll-row--category" id="categoryRow"></div>
+  </section>
+
+  <!-- 오늘의딜 -->
+  <section class="section">
+    <div class="section__head">
+      <h2>오늘의딜</h2>
+      <a href="#" class="more-link">더보기 &gt;</a>
+    </div>
+    <div class="grid grid--4" id="dealGrid"></div>
+  </section>
+
+  <!-- 유저들의 인테리어 시공 리뷰 -->
+  <section class="section">
+    <div class="section__head">
+      <h2>유저들의 인테리어 시공 리뷰</h2>
+      <a href="#" class="more-link">더보기 &gt;</a>
+    </div>
+    <div class="grid grid--3" id="reviewGrid"></div>
+  </section>
+
+  <!-- 오늘의 기획전 -->
+  <section class="section">
+    <div class="section__head">
+      <h2>오늘의 기획전</h2>
+      <a href="#" class="more-link">더보기 &gt;</a>
+    </div>
+    <div class="grid grid--4" id="promoGrid"></div>
+  </section>
+
+  <!-- 베스트 -->
+  <section class="section">
+    <div class="section__head">
+      <h2>베스트</h2>
+      <a href="#" class="more-link">더보기 &gt;</a>
+    </div>
+    <div class="tab-row" id="bestTabs"></div>
+    <div class="grid grid--3" id="bestGrid"></div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__col">
+      <p class="footer__cs-title">고객센터 &gt;</p>
+      <p class="footer__phone">1670-0876 09:00~18:00</p>
+      <ul class="footer__links">
+        <li><a href="#">서비스 이용 안내</a></li>
+        <li><a href="#">시공 문의</a></li>
+        <li><a href="#">제휴/입점 문의</a></li>
+        <li><a href="#">고객센터 챗봇</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <p class="footer__cs-title">회사소개</p>
+      <ul class="footer__links">
+        <li><a href="#">회사소개</a></li>
+        <li><a href="#">이용약관</a></li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">전자금융거래 이용약관</a></li>
+      </ul>
+      <p class="footer__biz">버즈빌(주) | 대표 홍길동 | 사업자등록번호 000-00-00000<br>서울특별시 강남구 테헤란로 000 (우편번호 00000)<br>통신판매업신고 제0000-서울강남-0000호</p>
+    </div>
+    <div class="footer__col footer__col--sns">
+      <div class="footer__sns">
+        <a href="#" aria-label="facebook">📘</a>
+        <a href="#" aria-label="instagram">📷</a>
+        <a href="#" aria-label="youtube">▶️</a>
+      </div>
+      <div class="footer__marks">
+        <span>ISMS</span><span>PCI DSS</span>
+      </div>
+    </div>
+  </div>
+  <p class="footer__copyright">© 2026 buzzvil Inc. All rights reserved. (교육용 클론 페이지)</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
